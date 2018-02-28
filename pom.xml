@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--<properties>-->
+        <!--<maven.compiler.source>9.0</maven.compiler.source>-->
+        <!--<maven.compiler.target>9.0</maven.compiler.target>-->
+    <!--</properties>-->
+    <packaging>jar</packaging>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.7.0</version>
+            <executions>
+                <execution>
+                    <id>default-compile</id>
+                    <configuration>
+                        <!-- compile everything to ensure module-info contains right entries -->
+                        <!-- required when JAVA_HOME is JDK 8 or below -->
+                        <jdkToolchain>
+                            <version>9</version>
+                        </jdkToolchain>
+                        <release>9</release>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>base-compile</id>
+                    <goals>
+                        <goal>compile</goal>
+                    </goals>
+                    <!-- recompile everything for target VM except the module-info.java -->
+                    <configuration>
+                        <excludes>
+                            <exclude>module-info.java</exclude>
+                        </excludes>
+                    </configuration>
+                </execution>
+            </executions>
+
+
+            <!-- defaults for compile and testCompile -->
+            <configuration>
+                <!-- jdkToolchain required when JAVA_HOME is JDK 9 or above -->
+                <jdkToolchain>
+                    <version>[1.5,9)</version>
+                </jdkToolchain>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
+    <groupId>17311349</groupId>
+    <artifactId>17311349</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>7.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>7.2.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>7.2.1</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
